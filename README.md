@@ -20,3 +20,24 @@ Clone o repositório para sua máquina local:
 
 ```bash
 git clone <URL_DO_SEU_REPOSITORIO>
+
+
+### 2. Instale as Dependências
+
+Navegue até o diretório do projeto e instale as dependências usando o comando:
+
+```bash
+dotnet restore
+
+
+### 3. Configuração do Banco de Dados
+
+**PostgreSQL**
+Adicione as configurações de conexão com o banco PostgreSQL no arquivo appsettings.json
+
+```bash
+{
+  "ConnectionStrings": {
+    "PostgreSQL": "Host=localhost;Database=salesdb;Username=postgres;Password=yourpassword"
+  }
+}
