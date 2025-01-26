@@ -1,13 +1,24 @@
 using Microsoft.EntityFrameworkCore;
+using System.Globalization; 
 using MongoDB.Driver;
+using SalesAPI.Models;
 using SalesAPI.Data;
 using MongoDB.Bson;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configurar a cultura padrão (ISO 8601 ou outra preferida)
+var cultureInfo = new CultureInfo("pt-BR"); // Para formato ISO 8601
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
+
 // Adicionar serviços ao container
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Adicionar serviço de Controllers (para usar MapControllers)
+builder.Services.AddControllers();
 
 // Configuração do contexto do banco de dados PostgreSQL
 builder.Services.AddDbContext<SalesDbContext>(options =>
@@ -17,7 +28,7 @@ builder.Services.AddDbContext<SalesDbContext>(options =>
 builder.Services.AddSingleton<IMongoDatabase>(sp =>
 {
     var mongoClient = new MongoClient(builder.Configuration.GetConnectionString("MongoDB"));
-    return mongoClient.GetDatabase("salesdb");
+    return mongoClient.GetDatabase("salesdb");  // Banco de dados "salesdb" para MongoDB
 });
 
 var app = builder.Build();
@@ -31,46 +42,48 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Mapeia todos os controllers
+app.MapControllers();
+
 // Testar conexão com MongoDB
 app.MapGet("/api/v1/test-mongodb", async (IMongoDatabase mongoDatabase) =>
 {
     try
     {
-        var collection = mongoDatabase.GetCollection<BsonDocument>("Orders");
-        var count = await collection.CountDocumentsAsync(FilterDefinition<BsonDocument>.Empty); // Consulta simples
+        var collection = mongoDatabase.GetCollection<BsonDocument>("Orders");  // Coleção "Orders"
+        var count = await collection.CountDocumentsAsync(FilterDefinition<BsonDocument>.Empty);  // Consulta simples
         return Results.Ok(new { Status = "MongoDB connection successful", OrderCount = count });
     }
     catch (Exception ex)
     {
-        return Results.Problem(detail: ex.Message, statusCode: 500);
-
+        return Results.Problem(detail: ex.Message, statusCode: 500);  // Se ocorrer erro, retorna mensagem de erro
     }
 }).WithName("TestMongoDB")
   .WithOpenApi();
-
-
 
 // Testar conexão com PostgreSQL
 app.MapGet("/api/v1/test-postgresql", async (SalesDbContext db) =>
 {
     try
     {
-        var count = await db.Orders.CountAsync(); // Faz uma consulta simples
+        var count = await db.Orders.CountAsync();  // Consulta simples para contar ordens no PostgreSQL
         return Results.Ok(new { Status = "PostgreSQL connection successful", OrderCount = count });
     }
     catch (Exception ex)
     {
-        return Results.Problem(detail: ex.Message, statusCode: 500);
-
+        return Results.Problem(detail: ex.Message, statusCode: 500);  // Se ocorrer erro, retorna mensagem de erro
     }
 }).WithName("TestPostgreSQL")
   .WithOpenApi();
 
+// Chamar os seeds para popular a base de dados
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<SalesDbContext>();
 
-
-// Exemplo de endpoint de health check
-app.MapGet("/api/v1/health", () => Results.Ok(new { Status = "API is running" }))
-   .WithName("HealthCheck")
-   .WithOpenApi();
+    // Chamar os métodos de seed
+    DatabaseSeeder.SeedProdutos(context);  // Seed de Produtos
+    DatabaseSeeder.SeedClientes(context);  // Seed de Clientes
+}
 
 app.Run();

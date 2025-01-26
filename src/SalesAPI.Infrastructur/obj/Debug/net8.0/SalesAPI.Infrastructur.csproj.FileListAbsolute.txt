@@ -1,0 +1,12 @@
+C:\Projetos\SalesAPI\src\SalesAPI.Infrastructur\bin\Debug\net8.0\SalesAPI.Infrastructur.deps.json
+C:\Projetos\SalesAPI\src\SalesAPI.Infrastructur\bin\Debug\net8.0\SalesAPI.Infrastructur.dll
+C:\Projetos\SalesAPI\src\SalesAPI.Infrastructur\bin\Debug\net8.0\SalesAPI.Infrastructur.pdb
+C:\Projetos\SalesAPI\src\SalesAPI.Infrastructur\obj\Debug\net8.0\SalesAPI.Infrastructur.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projetos\SalesAPI\src\SalesAPI.Infrastructur\obj\Debug\net8.0\SalesAPI.Infrastructur.AssemblyInfoInputs.cache
+C:\Projetos\SalesAPI\src\SalesAPI.Infrastructur\obj\Debug\net8.0\SalesAPI.Infrastructur.AssemblyInfo.cs
+C:\Projetos\SalesAPI\src\SalesAPI.Infrastructur\obj\Debug\net8.0\SalesAPI.Infrastructur.csproj.CoreCompileInputs.cache
+C:\Projetos\SalesAPI\src\SalesAPI.Infrastructur\obj\Debug\net8.0\SalesAPI.Infrastructur.sourcelink.json
+C:\Projetos\SalesAPI\src\SalesAPI.Infrastructur\obj\Debug\net8.0\SalesAPI.Infrastructur.dll
+C:\Projetos\SalesAPI\src\SalesAPI.Infrastructur\obj\Debug\net8.0\refint\SalesAPI.Infrastructur.dll
+C:\Projetos\SalesAPI\src\SalesAPI.Infrastructur\obj\Debug\net8.0\SalesAPI.Infrastructur.pdb
+C:\Projetos\SalesAPI\src\SalesAPI.Infrastructur\obj\Debug\net8.0\ref\SalesAPI.Infrastructur.dll
