@@ -1,4 +1,4 @@
-using System.Globalization; 
+using System.Globalization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SalesAPI.Data;
@@ -27,6 +27,33 @@ public class VendasController : ControllerBase
         using var transaction = await _context.Database.BeginTransactionAsync();
         try
         {
+
+            // Verifique se o ClienteId foi informado
+            if (vendaDto.ClienteId == 0)
+            {
+                return BadRequest("O ClienteId é obrigatório.");
+            }
+
+            // Verifique se o cliente existe no banco
+            var clienteExiste = await _context.Clientes.AnyAsync(c => c.ClienteId == vendaDto.ClienteId);
+            if (!clienteExiste)
+            {
+                return BadRequest("O cliente informado não existe.");
+            }
+
+            //Verifique se a FilialId foi informada
+            if (vendaDto.FilialId == 0)
+            {
+                return BadRequest("A FilialId é obrigatória");
+            }
+
+            //Veririque se a Filial existe no banco
+            var filialExiste = await _context.Filiais.AnyAsync(f => f.FilialId == vendaDto.FilialId);
+            if (!filialExiste)
+            {
+                return BadRequest("A Filial informada não existe.");
+            }
+
             // 2. Verificar se os produtos existem e se há estoque suficiente.
             var produtos = await _context.Produtos
                 .Where(p => vendaDto.Itens.Select(i => i.ProdutoId).Contains(p.ProdutoId))
@@ -105,11 +132,11 @@ public class VendasController : ControllerBase
                     Desconto = itemDto.Desconto,
                     VendaId = venda.Id // Associe à nova venda
                 };
-            // Exibe o ID da venda para validação antes de salvar
-            Console.WriteLine($"VendaId enviada: {venda.Id}");
+                // Exibe o ID da venda para validação antes de salvar
+                Console.WriteLine($"VendaId enviada: {venda.Id}");
 
-            // Adicione o novo item à lista de itens da venda
-            _context.VendaItens.Add(novoItem);
+                // Adicione o novo item à lista de itens da venda
+                _context.VendaItens.Add(novoItem);
             }
 
             await _context.SaveChangesAsync(); // Salva os itens na tabela VendaItems
@@ -137,6 +164,12 @@ public class VendasController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetVendaById(int id)
     {
+         // Verifica se o ID é inválido (0 ou negativo)
+        if (id <= 0)
+        {
+            return BadRequest("O ID da venda não foi informado ou é inválido. Por favor, forneça um ID válido.");
+        }
+
         var venda = await _context.Vendas
             .Include(v => v.VendaItems)
             .ThenInclude(i => i.Produto)
@@ -161,64 +194,65 @@ public class VendasController : ControllerBase
     }
 
     [HttpGet]
-   public async Task<IActionResult> GetVendas([FromQuery] string dataInicial, [FromQuery] string dataFinal, [FromQuery] int? clienteId)
-{
-    // Variáveis para armazenar as datas convertidas
-    DateTime? dataInicialParsed = null, dataFinalParsed = null;
-
-    // Validar e converter 'dataInicial' se fornecida
-    if (!string.IsNullOrWhiteSpace(dataInicial))
+    public async Task<IActionResult> GetVendas([FromQuery] string dataInicial, [FromQuery] string dataFinal, [FromQuery] int? clienteId)
     {
-        if (!DateTime.TryParseExact(dataInicial, "dd/MM/yyyy", new CultureInfo("pt-BR"), DateTimeStyles.None, out var parsedInicial))
+     
+        // Variáveis para armazenar as datas convertidas
+        DateTime? dataInicialParsed = null, dataFinalParsed = null;
+
+        // Validar e converter 'dataInicial' se fornecida
+        if (!string.IsNullOrWhiteSpace(dataInicial))
         {
-            return BadRequest("O parâmetro 'dataInicial' deve estar no formato 'dd/MM/yyyy'.");
+            if (!DateTime.TryParseExact(dataInicial, "dd/MM/yyyy", new CultureInfo("pt-BR"), DateTimeStyles.None, out var parsedInicial))
+            {
+                return BadRequest("O parâmetro 'dataInicial' deve estar no formato 'dd/MM/yyyy'.");
+            }
+            dataInicialParsed = parsedInicial.ToUniversalTime(); // Convertendo para UTC
         }
-        dataInicialParsed = parsedInicial.ToUniversalTime(); // Convertendo para UTC
-    }
 
-    // Validar e converter 'dataFinal' se fornecida
-    if (!string.IsNullOrWhiteSpace(dataFinal))
-    {
-        if (!DateTime.TryParseExact(dataFinal, "dd/MM/yyyy", new CultureInfo("pt-BR"), DateTimeStyles.None, out var parsedFinal))
+        // Validar e converter 'dataFinal' se fornecida
+        if (!string.IsNullOrWhiteSpace(dataFinal))
         {
-            return BadRequest("O parâmetro 'dataFinal' deve estar no formato 'dd/MM/yyyy'.");
+            if (!DateTime.TryParseExact(dataFinal, "dd/MM/yyyy", new CultureInfo("pt-BR"), DateTimeStyles.None, out var parsedFinal))
+            {
+                return BadRequest("O parâmetro 'dataFinal' deve estar no formato 'dd/MM/yyyy'.");
+            }
+            dataFinalParsed = parsedFinal.ToUniversalTime(); // Convertendo para UTC
         }
-        dataFinalParsed = parsedFinal.ToUniversalTime(); // Convertendo para UTC
-    }
 
-    // Construir a consulta com os filtros opcionais
-    var query = _context.Vendas.AsQueryable();
+        // Construir a consulta com os filtros opcionais
+        var query = _context.Vendas.AsQueryable();
 
-    if (dataInicialParsed.HasValue)
-        query = query.Where(v => v.DataVenda >= dataInicialParsed.Value);
+        if (dataInicialParsed.HasValue)
+            query = query.Where(v => v.DataVenda >= dataInicialParsed.Value);
 
-    if (dataFinalParsed.HasValue)
-        query = query.Where(v => v.DataVenda <= dataFinalParsed.Value);
+        if (dataFinalParsed.HasValue)
+            query = query.Where(v => v.DataVenda <= dataFinalParsed.Value);
 
-    if (clienteId.HasValue)
-        query = query.Where(v => v.ClienteId == clienteId.Value);
+        if (clienteId.HasValue)
+            query = query.Where(v => v.ClienteId == clienteId.Value);
 
-    // Consultar e incluir os relacionamentos necessários
-    var vendas = await query
-        .Include(v => v.VendaItems)
-        .ThenInclude(i => i.Produto)
-        .ToListAsync();
+        // Consultar e incluir os relacionamentos necessários
+        var vendas = await query
+            .Include(v => v.VendaItems)
+            .ThenInclude(i => i.Produto)
+            .ToListAsync();
 
-    // Retornar o resultado no formato desejado
-    return Ok(vendas.Select(v => new
-    {
-        v.Id,
-        v.DataVenda,
-        v.Total,
-        Itens = v.VendaItems.Select(i => new
+        // Retornar o resultado no formato desejado
+        return Ok(vendas.Select(v => new
         {
-            i.ProdutoId,
-            i.Produto.Nome,
-            i.Quantidade,
-            i.Preco
-        })
-    }));
-}
+            v.Id,
+            v.DataVenda,
+            v.Total,
+            Itens = v.VendaItems.Select(i => new
+            {
+                i.ProdutoId,
+                i.Produto.Nome,
+                i.Quantidade,
+                i.Preco
+            })
+        }));
+    }
 
     [HttpPut("{id}")]
     public async Task<IActionResult> AtualizarVenda(int id, [FromBody] AtualizarVendaDto vendaDto)
@@ -328,7 +362,7 @@ public class VendasController : ControllerBase
 
             // 3. Excluir ou marcar a venda como cancelada (depende de como preferir tratar isso)
             _context.Vendas.Remove(venda);
-            
+
             await _context.SaveChangesAsync();
             await transaction.CommitAsync();
 
