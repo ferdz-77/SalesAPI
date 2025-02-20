@@ -77,4 +77,14 @@ POST /api/vendas
 Rodar testes unitários e de integração:  
 ```sh
 dotnet test
+```
+---
+
+## 🤝 Contribuição
+1. Faça um fork do repositório.
+2. Crie uma nova branch (`git checkout -b feature/nome-da-feature`).
+3. Faça suas alterações e commit (`git commit -m 'Adicionando uma nova feature'`).
+4. Faça o push para a branch (`git push origin feature/nome-da-feature`).
+5. Abra um Pull Request.
+
 
