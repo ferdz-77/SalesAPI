@@ -1,26 +1,48 @@
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
-
 
 namespace SalesAPI.Models
 {
     public class Venda
     {
         [Key]
-        public int Id { get; set; }  // Id da venda, chave primária
-        public int ClienteId { get; set; }  // Chave estrangeira
+        public int Id { get; set; }
+
+        [Required]
+        public int ClienteId { get; set; }
+
         public Cliente? Cliente { get; set; }
-        public DateTime DataVenda { get; set; } = DateTime.UtcNow; // Data da venda
-        public decimal Total { get; set; } // Total da venda (calculado com base nos itens)
 
-        public bool Cancelada { get; set; }  // Nova propriedade para indicar se a venda foi cancelada
+        public DateTime DataVenda { get; set; } = DateTime.UtcNow;
 
-        public ICollection<VendaItem> VendaItems { get; set; }
+        public decimal Total => CalcularTotal(); // Propriedade calculada
 
-         // Chave estrangeira para Filial
-        public int FilialId { get; set; } 
+        public bool IsCanceled { get; set; }
+
+        [Required]
+        public int FilialId { get; set; }
+
         public Filial Filial { get; set; }
 
+        // Armazena internamente os itens de venda
+        private readonly List<VendaItem> _vendaItems = new();
+
+        // Expondo como somente leitura
+        public IReadOnlyCollection<VendaItem> VendaItems => _vendaItems.AsReadOnly();
+
         public Venda() { }
-        
+
+        public void AdicionarItem(VendaItem item)
+        {
+            if (item == null)
+                throw new ArgumentNullException(nameof(item));
+
+            _vendaItems.Add(item);
+        }
+
+        private decimal CalcularTotal()
+        {
+            return _vendaItems.Sum(item => item.Preco * item.Quantidade);
+        }
     }
 }

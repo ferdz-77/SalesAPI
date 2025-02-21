@@ -1,3 +1,6 @@
+using SalesAPI.Models;
+using Xunit.Abstractions;
+
 public class AtualizarVendaDto
 {
     public int ClienteId { get; set; }
