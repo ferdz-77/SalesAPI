@@ -4,6 +4,8 @@ using MongoDB.Driver;
 using SalesAPI.Models;
 using SalesAPI.Data;
 using MongoDB.Bson;
+using SalesAPI.Repositories.Interfaces;
+using SalesAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,8 @@ CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 // Adicionar serviços ao container
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+
 
 // Adicionar serviço de Controllers (para usar MapControllers)
 builder.Services.AddControllers();

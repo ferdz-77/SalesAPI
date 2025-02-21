@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using SalesAPI.Data;
 using SalesAPI.Models;
 using SalesAPI.Dtos;
+using SalesAPI.Services;
 
 
 [ApiController]
@@ -12,6 +13,8 @@ public class VendasController : ControllerBase
 {
     private readonly SalesDbContext _context;
     private readonly ILogger<VendasController> _logger;
+    private readonly SalesService _salesService;
+
 
     public VendasController(SalesDbContext context, ILogger<VendasController> logger)
     {
@@ -72,7 +75,7 @@ public class VendasController : ControllerBase
             // Adiciona os itens usando um método apropriado
             foreach (var item in vendaItensAtualizados)
             {
-                venda.AdicionarItem(new VendaItem
+                _salesService.AdicionarItem(venda, new VendaItem
                 {
                     ProdutoId = item.ProdutoId,
                     Quantidade = item.Quantidade,
@@ -108,5 +111,6 @@ public class VendasController : ControllerBase
 
         return Ok(venda);
     }
+
 
 }
