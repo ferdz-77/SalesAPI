@@ -7,6 +7,7 @@ using Moq;
 using SalesAPI.Repositories.Interfaces;
 using SalesAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using FluentAssertions;
 
 public class VendaTests
 {
@@ -15,7 +16,7 @@ public class VendaTests
     public VendaTests()
     {
         var mockProdutoRepository = new Mock<IProdutoRepository>();
-        var options = new Microsoft.EntityFrameworkCore.DbContextOptionsBuilder<SalesDbContext>()
+        var options = new DbContextOptionsBuilder<SalesDbContext>()
             .UseInMemoryDatabase(databaseName: "TestDb")
             .Options;
         var dbContext = new SalesDbContext(options);
@@ -30,7 +31,7 @@ public class VendaTests
         var venda = new Venda();
 
         // Assert
-        Assert.True(venda.DataVenda > DateTime.MinValue);
+        venda.DataVenda.Should().BeAfter(DateTime.MinValue);
     }
 
     [Fact]
@@ -40,7 +41,8 @@ public class VendaTests
         var venda = new Venda();
 
         // Assert
-        Assert.NotNull(venda.VendaItems);
+        venda.VendaItems.Should().NotBeNull();
+        venda.VendaItems.Should().BeEmpty();
     }
 
     [Fact]
@@ -55,6 +57,6 @@ public class VendaTests
         decimal totalCalculado = _salesService.CalculateTotal(venda);
 
         // Assert
-        Assert.Equal(130.0m, totalCalculado);
+        totalCalculado.Should().Be(130.0m);
     }
 }

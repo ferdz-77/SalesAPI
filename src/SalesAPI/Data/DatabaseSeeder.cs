@@ -1,24 +1,53 @@
 using Bogus;
 using SalesAPI.Models;
 using SalesAPI.Data;
+using Microsoft.EntityFrameworkCore;
 
 public static class DatabaseSeeder
 {
-    public static void SeedProdutos(SalesDbContext context)
+    public static async Task SeedProdutos(SalesDbContext context, ILogger logger)
     {
-        if (!context.Produtos.Any()) // Gera dados apenas se a tabela estiver vazia
+        try
         {
-            var produtoFaker = new Faker<Produto>()
-                .RuleFor(p => p.Nome, f => f.Commerce.ProductName())
-                .RuleFor(p => p.Preco, f => decimal.Parse(f.Commerce.Price(1, 100)))
-                .RuleFor(p => p.QuantidadeEstoque, f => f.Random.Int(0, 500));
+            // Verifica se pode conectar ao banco de dados
+            if (!await context.Database.CanConnectAsync())
+            {
+                logger.LogError("Não foi possível conectar ao banco de dados.");
+                return;
+            }
 
-            var produtos = produtoFaker.Generate(50);
-            context.Produtos.AddRange(produtos);
-            context.SaveChanges();
-            Console.WriteLine("50 produtos fictícios gerados com sucesso!");
+            // Verifica se a tabela "Produtos" existe
+            var tableExists = await context.Database.ExecuteSqlRawAsync("SELECT to_regclass('public.produtos')") != null;
+
+            if (!tableExists)
+            {
+                logger.LogError("A tabela 'Produtos' não existe.");
+                return;
+            }
+
+            if (!context.Produtos.Any()) // Gera dados apenas se a tabela estiver vazia
+            {
+                var produtoFaker = new Faker<Produto>()
+                    .RuleFor(p => p.Nome, f => f.Commerce.ProductName())
+                    .RuleFor(p => p.Preco, f => decimal.Parse(f.Commerce.Price(1, 100)))
+                    .RuleFor(p => p.QuantidadeEstoque, f => f.Random.Int(0, 500));
+
+                var produtos = produtoFaker.Generate(50);
+                context.Produtos.AddRange(produtos);
+                await context.SaveChangesAsync();
+                logger.LogInformation("50 produtos fictícios gerados com sucesso!");
+            }
+            else
+            {
+                logger.LogInformation("A tabela 'Produtos' já contém dados.");
+            }
+        }
+        catch (Exception ex)
+        {
+            logger.LogError($"Erro ao gerar produtos: {ex.Message}");
         }
     }
+
     public static void SeedClientes(SalesDbContext context)
     {
         // Verificar se já existe algum cliente na base

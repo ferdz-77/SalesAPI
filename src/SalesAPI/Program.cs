@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
-using System.Globalization; 
+using System.Globalization;
 using MongoDB.Driver;
 using SalesAPI.Models;
 using SalesAPI.Data;
 using MongoDB.Bson;
 using SalesAPI.Repositories.Interfaces;
 using SalesAPI.Repositories;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,12 +15,10 @@ var cultureInfo = new CultureInfo("pt-BR"); // Para formato ISO 8601
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
 CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
-
 // Adicionar serviços ao container
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
-
 
 // Adicionar serviço de Controllers (para usar MapControllers)
 builder.Services.AddControllers();
@@ -70,23 +69,28 @@ app.MapGet("/api/v1/test-postgresql", async (SalesDbContext db) =>
 {
     try
     {
-        var count = await db.Orders.CountAsync();  // Consulta simples para contar ordens no PostgreSQL
-        return Results.Ok(new { Status = "PostgreSQL connection successful", OrderCount = count });
+        await db.Database.CanConnectAsync(); // Verifica a conexão
+        return Results.Ok(new { Status = "PostgreSQL connection successful" });
     }
     catch (Exception ex)
     {
-        return Results.Problem(detail: ex.Message, statusCode: 500);  // Se ocorrer erro, retorna mensagem de erro
+        // Log da exceção para maior visibilidade
+        Console.WriteLine($"Erro ao conectar ao PostgreSQL: {ex.Message}");
+        return Results.Problem(detail: ex.Message, statusCode: 500); // Retorna erro
     }
 }).WithName("TestPostgreSQL")
   .WithOpenApi();
+
 
 // Chamar os seeds para popular a base de dados
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<SalesDbContext>();
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>(); // Obtém o logger
 
     // Chamar os métodos de seed
-    DatabaseSeeder.SeedProdutos(context);  // Seed de Produtos
+    DatabaseSeeder.SeedProdutos(context, logger);  // Passa o logger
+                                                   // Seed de Produtos
     DatabaseSeeder.SeedClientes(context);  // Seed de Clientes
 }
 

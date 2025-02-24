@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   postgres:
@@ -6,8 +6,8 @@ services:
     image: postgres:13
     environment:
       POSTGRES_DB: postgresql_salesapi
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: WQsGKynyWjsxrgh4veqWBLoEq3pVK7uw
+      POSTGRES_USER: postgresql_salesapi_user
+      POSTGRES_PASSWORD: Senha@123
     ports:
       - "5432:5432"
     volumes:

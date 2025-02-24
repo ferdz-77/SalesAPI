@@ -17,7 +17,7 @@ namespace SalesAPI.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.1")
+                .HasAnnotation("ProductVersion", "9.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -171,9 +171,6 @@ namespace SalesAPI.Migrations
                         .HasColumnName("Id")
                         .HasDefaultValueSql("nextval('\"Vendas_id_seq\"'::regclass)");
 
-                    b.Property<bool>("Cancelada")
-                        .HasColumnType("boolean");
-
                     b.Property<int>("ClienteId")
                         .HasColumnType("integer");
 
@@ -183,8 +180,8 @@ namespace SalesAPI.Migrations
                     b.Property<int>("FilialId")
                         .HasColumnType("integer");
 
-                    b.Property<decimal>("Total")
-                        .HasColumnType("numeric");
+                    b.Property<bool>("IsCanceled")
+                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 

@@ -1,64 +1,110 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TestRun id="4d35ec1f-2f89-4854-952a-19e3511283a4" name="Ferdz@DESKTOP-CUHST1A 2025-02-21 19:54:08" runUser="DESKTOP-CUHST1A\Ferdz" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
-  <Times creation="2025-02-21T19:54:08.7653318-03:00" queuing="2025-02-21T19:54:08.7653320-03:00" start="2025-02-21T19:54:04.9215738-03:00" finish="2025-02-21T19:54:08.7729241-03:00" />
-  <TestSettings name="default" id="2660e2d1-46fa-402e-a87a-976ae0ff016d">
-    <Deployment runDeploymentRoot="Ferdz_DESKTOP-CUHST1A_2025-02-21_19_54_08" />
+<TestRun id="3440f660-9868-45b1-bac4-1f8cdffefd2a" name="Ferdz@DESKTOP-CUHST1A 2025-02-22 21:03:45" runUser="DESKTOP-CUHST1A\Ferdz" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2025-02-22T21:03:45.6603106-03:00" queuing="2025-02-22T21:03:45.6603109-03:00" start="2025-02-22T21:03:43.3943134-03:00" finish="2025-02-22T21:03:45.7285119-03:00" />
+  <TestSettings name="default" id="8146b0df-0388-435c-83d5-e96553bb9e5f">
+    <Deployment runDeploymentRoot="Ferdz_DESKTOP-CUHST1A_2025-02-22_21_03_45" />
   </TestSettings>
   <Results>
-    <UnitTestResult executionId="34588bf1-79c9-4e5a-9b24-33c5a6e181e0" testId="dc628af5-69dc-4ecf-740e-36a7390099a7" testName="SalesAPI.Tests.UnitTest1.Test1" computerName="DESKTOP-CUHST1A" duration="00:00:00.0058003" startTime="2025-02-21T19:54:07.6126688-03:00" endTime="2025-02-21T19:54:07.6143215-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="34588bf1-79c9-4e5a-9b24-33c5a6e181e0" />
-    <UnitTestResult executionId="64beb975-c9e0-412f-b082-97ebdf2c806d" testId="fb05d6fc-4863-0c34-b3a7-cf5b0548ab59" testName="SalesServiceTests.CreateOrder_Should_ThrowException_When_StockIsInsufficient" computerName="DESKTOP-CUHST1A" duration="00:00:00.0057599" startTime="2025-02-21T19:54:08.6213835-03:00" endTime="2025-02-21T19:54:08.6268847-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="64beb975-c9e0-412f-b082-97ebdf2c806d" />
-    <UnitTestResult executionId="411a1e92-02fb-4a45-855c-e4d8296220db" testId="48227a8f-3b51-3615-741a-3fb2c675cd60" testName="VendaTests.NovaVenda_DeveTerListaDeItensNaoNula" computerName="DESKTOP-CUHST1A" duration="00:00:00.1699247" startTime="2025-02-21T19:54:07.6324371-03:00" endTime="2025-02-21T19:54:07.7601014-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="411a1e92-02fb-4a45-855c-e4d8296220db" />
-    <UnitTestResult executionId="c9336105-68d6-4030-9d3a-a570e8b04c50" testId="4c70ce35-b397-070c-a6d7-d858e0230ec8" testName="SalesServiceTests.CreateOrder_Should_CreateOrder_When_StockIsSufficient" computerName="DESKTOP-CUHST1A" duration="00:00:01.0503318" startTime="2025-02-21T19:54:07.6086424-03:00" endTime="2025-02-21T19:54:08.6209879-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c9336105-68d6-4030-9d3a-a570e8b04c50" />
-    <UnitTestResult executionId="fd307da4-de61-4e43-afc5-cd6d373032b5" testId="e157215d-851d-6f6d-b1d8-5b929ce85f5c" testName="VendaTests.CriarVenda_DeveCalcularTotalCorretamente" computerName="DESKTOP-CUHST1A" duration="00:00:00.0181065" startTime="2025-02-21T19:54:07.7612722-03:00" endTime="2025-02-21T19:54:07.7783738-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fd307da4-de61-4e43-afc5-cd6d373032b5" />
-    <UnitTestResult executionId="33e38d91-4298-492f-89ce-9cc4ae6ed1c1" testId="11bdb37d-1cf6-157f-63d6-503a413129e9" testName="VendaTests.NovaVenda_DeveTerDataVendaDefinida" computerName="DESKTOP-CUHST1A" duration="00:00:00.0007023" startTime="2025-02-21T19:54:07.7789340-03:00" endTime="2025-02-21T19:54:07.7791116-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="33e38d91-4298-492f-89ce-9cc4ae6ed1c1" />
+    <UnitTestResult executionId="0729fc32-56c4-4003-89c9-0a25528e6144" testId="dc628af5-69dc-4ecf-740e-36a7390099a7" testName="SalesAPI.Tests.UnitTest1.Test1" computerName="DESKTOP-CUHST1A" duration="00:00:00.0002053" startTime="2025-02-22T21:03:44.7774777-03:00" endTime="2025-02-22T21:03:44.7775667-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0729fc32-56c4-4003-89c9-0a25528e6144" />
+    <UnitTestResult executionId="4cb61983-2980-48da-9f34-bccb6f063335" testId="48227a8f-3b51-3615-741a-3fb2c675cd60" testName="VendaTests.NovaVenda_DeveTerListaDeItensNaoNula" computerName="DESKTOP-CUHST1A" duration="00:00:00.2996010" startTime="2025-02-22T21:03:44.3934919-03:00" endTime="2025-02-22T21:03:44.7056129-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4cb61983-2980-48da-9f34-bccb6f063335" />
+    <UnitTestResult executionId="9509c2b6-2bf1-4292-a95b-2f3058b57721" testId="4f934d30-8a67-d4f1-d2f3-d4f5291aa599" testName="VendaFunctionalTests.CriarVenda_FluxoCompleto_DeveRetornar201EValidarBanco" computerName="DESKTOP-CUHST1A" duration="00:00:00.0010000" startTime="2025-02-22T21:03:44.7269033-03:00" endTime="2025-02-22T21:03:44.7685060-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9509c2b6-2bf1-4292-a95b-2f3058b57721">
+      <Output>
+        <ErrorInfo>
+          <Message>System.InvalidOperationException : Can't find 'C:\Projetos\SalesAPI\tests\SalesAPI.Tests\bin\Debug\net8.0\testhost.deps.json'. This file is required for functional tests to run properly. There should be a copy of the file on your source project bin folder. If that is not the case, make sure that the property PreserveCompilationContext is set to true on your project file. E.g '&lt;PreserveCompilationContext&gt;true&lt;/PreserveCompilationContext&gt;'. For functional tests to work they need to either run from the build output folder or the testhost.deps.json file from your application's output directory must be copied to the folder where the tests are running on. A common cause for this error is having shadow copying enabled when the tests run.</Message>
+          <StackTrace>   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureDepsFile()&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureServer()&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(DelegatingHandler[] handlers)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(Uri baseAddress, DelegatingHandler[] handlers)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient(WebApplicationFactoryClientOptions options)&#xD;
+   at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient()&#xD;
+   at VendaFunctionalTests..ctor(SalesApiFactory factory) in C:\Projetos\SalesAPI\tests\SalesAPI.Tests\VendaFunctionalTests.cs:line 12&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ec7e3ede-9116-4378-899b-b947fcb0f02b" testId="4c70ce35-b397-070c-a6d7-d858e0230ec8" testName="SalesServiceTests.CreateOrder_Should_CreateOrder_When_StockIsSufficient" computerName="DESKTOP-CUHST1A" duration="00:00:01.1802621" startTime="2025-02-22T21:03:44.3950405-03:00" endTime="2025-02-22T21:03:45.5820864-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ec7e3ede-9116-4378-899b-b947fcb0f02b" />
+    <UnitTestResult executionId="81a7966e-5ba3-4356-aae4-67d3d4842312" testId="fb05d6fc-4863-0c34-b3a7-cf5b0548ab59" testName="SalesServiceTests.CreateOrder_Should_ThrowException_When_StockIsInsufficient" computerName="DESKTOP-CUHST1A" duration="00:00:00.0068384" startTime="2025-02-22T21:03:45.5954351-03:00" endTime="2025-02-22T21:03:45.5955597-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="81a7966e-5ba3-4356-aae4-67d3d4842312" />
+    <UnitTestResult executionId="9840e16d-06bf-4263-a1fd-68a2067d3e8e" testId="e157215d-851d-6f6d-b1d8-5b929ce85f5c" testName="VendaTests.CriarVenda_DeveCalcularTotalCorretamente" computerName="DESKTOP-CUHST1A" duration="00:00:00.0063311" startTime="2025-02-22T21:03:44.7189277-03:00" endTime="2025-02-22T21:03:44.7196246-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9840e16d-06bf-4263-a1fd-68a2067d3e8e" />
+    <UnitTestResult executionId="2a1df89d-c49b-4bae-ab98-05d562669c38" testId="11bdb37d-1cf6-157f-63d6-503a413129e9" testName="VendaTests.NovaVenda_DeveTerDataVendaDefinida" computerName="DESKTOP-CUHST1A" duration="00:00:00.0008570" startTime="2025-02-22T21:03:44.7216429-03:00" endTime="2025-02-22T21:03:44.7217784-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2a1df89d-c49b-4bae-ab98-05d562669c38" />
   </Results>
   <TestDefinitions>
+    <UnitTest name="VendaFunctionalTests.CriarVenda_FluxoCompleto_DeveRetornar201EValidarBanco" storage="c:\projetos\salesapi\tests\salesapi.tests\bin\debug\net8.0\salesapi.tests.dll" id="4f934d30-8a67-d4f1-d2f3-d4f5291aa599">
+      <Execution id="9509c2b6-2bf1-4292-a95b-2f3058b57721" />
+      <TestMethod codeBase="C:\Projetos\SalesAPI\tests\SalesAPI.Tests\bin\Debug\net8.0\SalesAPI.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="VendaFunctionalTests" name="CriarVenda_FluxoCompleto_DeveRetornar201EValidarBanco" />
+    </UnitTest>
     <UnitTest name="VendaTests.NovaVenda_DeveTerDataVendaDefinida" storage="c:\projetos\salesapi\tests\salesapi.tests\bin\debug\net8.0\salesapi.tests.dll" id="11bdb37d-1cf6-157f-63d6-503a413129e9">
-      <Execution id="33e38d91-4298-492f-89ce-9cc4ae6ed1c1" />
+      <Execution id="2a1df89d-c49b-4bae-ab98-05d562669c38" />
       <TestMethod codeBase="C:\Projetos\SalesAPI\tests\SalesAPI.Tests\bin\Debug\net8.0\SalesAPI.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="VendaTests" name="NovaVenda_DeveTerDataVendaDefinida" />
     </UnitTest>
     <UnitTest name="VendaTests.CriarVenda_DeveCalcularTotalCorretamente" storage="c:\projetos\salesapi\tests\salesapi.tests\bin\debug\net8.0\salesapi.tests.dll" id="e157215d-851d-6f6d-b1d8-5b929ce85f5c">
-      <Execution id="fd307da4-de61-4e43-afc5-cd6d373032b5" />
+      <Execution id="9840e16d-06bf-4263-a1fd-68a2067d3e8e" />
       <TestMethod codeBase="C:\Projetos\SalesAPI\tests\SalesAPI.Tests\bin\Debug\net8.0\SalesAPI.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="VendaTests" name="CriarVenda_DeveCalcularTotalCorretamente" />
     </UnitTest>
     <UnitTest name="SalesAPI.Tests.UnitTest1.Test1" storage="c:\projetos\salesapi\tests\salesapi.tests\bin\debug\net8.0\salesapi.tests.dll" id="dc628af5-69dc-4ecf-740e-36a7390099a7">
-      <Execution id="34588bf1-79c9-4e5a-9b24-33c5a6e181e0" />
+      <Execution id="0729fc32-56c4-4003-89c9-0a25528e6144" />
       <TestMethod codeBase="C:\Projetos\SalesAPI\tests\SalesAPI.Tests\bin\Debug\net8.0\SalesAPI.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SalesAPI.Tests.UnitTest1" name="Test1" />
     </UnitTest>
     <UnitTest name="SalesServiceTests.CreateOrder_Should_CreateOrder_When_StockIsSufficient" storage="c:\projetos\salesapi\tests\salesapi.tests\bin\debug\net8.0\salesapi.tests.dll" id="4c70ce35-b397-070c-a6d7-d858e0230ec8">
-      <Execution id="c9336105-68d6-4030-9d3a-a570e8b04c50" />
+      <Execution id="ec7e3ede-9116-4378-899b-b947fcb0f02b" />
       <TestMethod codeBase="C:\Projetos\SalesAPI\tests\SalesAPI.Tests\bin\Debug\net8.0\SalesAPI.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SalesServiceTests" name="CreateOrder_Should_CreateOrder_When_StockIsSufficient" />
     </UnitTest>
     <UnitTest name="VendaTests.NovaVenda_DeveTerListaDeItensNaoNula" storage="c:\projetos\salesapi\tests\salesapi.tests\bin\debug\net8.0\salesapi.tests.dll" id="48227a8f-3b51-3615-741a-3fb2c675cd60">
-      <Execution id="411a1e92-02fb-4a45-855c-e4d8296220db" />
+      <Execution id="4cb61983-2980-48da-9f34-bccb6f063335" />
       <TestMethod codeBase="C:\Projetos\SalesAPI\tests\SalesAPI.Tests\bin\Debug\net8.0\SalesAPI.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="VendaTests" name="NovaVenda_DeveTerListaDeItensNaoNula" />
     </UnitTest>
     <UnitTest name="SalesServiceTests.CreateOrder_Should_ThrowException_When_StockIsInsufficient" storage="c:\projetos\salesapi\tests\salesapi.tests\bin\debug\net8.0\salesapi.tests.dll" id="fb05d6fc-4863-0c34-b3a7-cf5b0548ab59">
-      <Execution id="64beb975-c9e0-412f-b082-97ebdf2c806d" />
+      <Execution id="81a7966e-5ba3-4356-aae4-67d3d4842312" />
       <TestMethod codeBase="C:\Projetos\SalesAPI\tests\SalesAPI.Tests\bin\Debug\net8.0\SalesAPI.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="SalesServiceTests" name="CreateOrder_Should_ThrowException_When_StockIsInsufficient" />
     </UnitTest>
   </TestDefinitions>
   <TestEntries>
-    <TestEntry testId="dc628af5-69dc-4ecf-740e-36a7390099a7" executionId="34588bf1-79c9-4e5a-9b24-33c5a6e181e0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="fb05d6fc-4863-0c34-b3a7-cf5b0548ab59" executionId="64beb975-c9e0-412f-b082-97ebdf2c806d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="48227a8f-3b51-3615-741a-3fb2c675cd60" executionId="411a1e92-02fb-4a45-855c-e4d8296220db" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="4c70ce35-b397-070c-a6d7-d858e0230ec8" executionId="c9336105-68d6-4030-9d3a-a570e8b04c50" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="e157215d-851d-6f6d-b1d8-5b929ce85f5c" executionId="fd307da4-de61-4e43-afc5-cd6d373032b5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
-    <TestEntry testId="11bdb37d-1cf6-157f-63d6-503a413129e9" executionId="33e38d91-4298-492f-89ce-9cc4ae6ed1c1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dc628af5-69dc-4ecf-740e-36a7390099a7" executionId="0729fc32-56c4-4003-89c9-0a25528e6144" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="48227a8f-3b51-3615-741a-3fb2c675cd60" executionId="4cb61983-2980-48da-9f34-bccb6f063335" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4f934d30-8a67-d4f1-d2f3-d4f5291aa599" executionId="9509c2b6-2bf1-4292-a95b-2f3058b57721" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4c70ce35-b397-070c-a6d7-d858e0230ec8" executionId="ec7e3ede-9116-4378-899b-b947fcb0f02b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fb05d6fc-4863-0c34-b3a7-cf5b0548ab59" executionId="81a7966e-5ba3-4356-aae4-67d3d4842312" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e157215d-851d-6f6d-b1d8-5b929ce85f5c" executionId="9840e16d-06bf-4263-a1fd-68a2067d3e8e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="11bdb37d-1cf6-157f-63d6-503a413129e9" executionId="2a1df89d-c49b-4bae-ab98-05d562669c38" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
   </TestEntries>
   <TestLists>
     <TestList name="Resultados que não estão em uma lista" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
     <TestList name="Todos os resultados carregados" id="19431567-8539-422a-85d7-44ee4e166bda" />
   </TestLists>
-  <ResultSummary outcome="Completed">
-    <Counters total="6" executed="6" passed="6" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  <ResultSummary outcome="Failed">
+    <Counters total="7" executed="7" passed="6" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
     <Output>
       <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.0.1+f8675c32e5 (64-bit .NET 8.0.10)&#xD;
-[xUnit.net 00:00:01.80]   Discovering: SalesAPI.Tests&#xD;
-[xUnit.net 00:00:01.85]   Discovered:  SalesAPI.Tests&#xD;
-[xUnit.net 00:00:01.88]   Starting:    SalesAPI.Tests&#xD;
-[xUnit.net 00:00:02.98]   Finished:    SalesAPI.Tests&#xD;
+[xUnit.net 00:00:00.14]   Discovering: SalesAPI.Tests&#xD;
+[xUnit.net 00:00:00.19]   Discovered:  SalesAPI.Tests&#xD;
+[xUnit.net 00:00:00.22]   Starting:    SalesAPI.Tests&#xD;
+     Warning:&#xD;
+     The component "Fluent Assertions" is governed by the rules defined in the Xceed License Agreement and&#xD;
+     the Xceed Fluent Assertions Community License. You may use Fluent Assertions free of charge for&#xD;
+     non-commercial use only. An active subscription is required to use Fluent Assertions for commercial use.&#xD;
+     Please contact Xceed Sales mailto:sales@xceed.com to acquire a subscription at a very low cost.&#xD;
+     A paid commercial license supports the development and continued increasing support of&#xD;
+     Fluent Assertions users under both commercial and community licenses. Help us&#xD;
+     keep Fluent Assertions at the forefront of unit testing.&#xD;
+     For more information, visit https://xceed.com/products/unit-testing/fluent-assertions/&#xD;
+[xUnit.net 00:00:00.63]       System.InvalidOperationException : Can't find 'C:\Projetos\SalesAPI\tests\SalesAPI.Tests\bin\Debug\net8.0\testhost.deps.json'. This file is required for functional tests to run properly. There should be a copy of the file on your source project bin folder. If that is not the case, make sure that the property PreserveCompilationContext is set to true on your project file. E.g '&lt;PreserveCompilationContext&gt;true&lt;/PreserveCompilationContext&gt;'. For functional tests to work they need to either run from the build output folder or the testhost.deps.json file from your application's output directory must be copied to the folder where the tests are running on. A common cause for this error is having shadow copying enabled when the tests run.&#xD;
+[xUnit.net 00:00:00.63]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.63]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureDepsFile()&#xD;
+[xUnit.net 00:00:00.63]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.EnsureServer()&#xD;
+[xUnit.net 00:00:00.63]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(DelegatingHandler[] handlers)&#xD;
+[xUnit.net 00:00:00.63]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateDefaultClient(Uri baseAddress, DelegatingHandler[] handlers)&#xD;
+[xUnit.net 00:00:00.63]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient(WebApplicationFactoryClientOptions options)&#xD;
+[xUnit.net 00:00:00.63]            at Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactory`1.CreateClient()&#xD;
+[xUnit.net 00:00:00.63]         C:\Projetos\SalesAPI\tests\SalesAPI.Tests\VendaFunctionalTests.cs(12,0): at VendaFunctionalTests..ctor(SalesApiFactory factory)&#xD;
+[xUnit.net 00:00:00.63]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.63]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.46]   Finished:    SalesAPI.Tests&#xD;
 </StdOut>
     </Output>
+    <RunInfos>
+      <RunInfo computerName="DESKTOP-CUHST1A" outcome="Error" timestamp="2025-02-22T21:03:44.7727852-03:00">
+        <Text>[xUnit.net 00:00:00.63]     VendaFunctionalTests.CriarVenda_FluxoCompleto_DeveRetornar201EValidarBanco [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
   </ResultSummary>
 </TestRun>
